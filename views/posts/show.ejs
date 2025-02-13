@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= post.title %></title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="post">
+        <h1><%= post.title %></h1>
+        <p><%= post.content %></p>
+        <h3>Comments:</h3>
+        <ul>
+            <% post.comments.forEach(function(comment) { %>
+                <li><%= comment %></li>
+            <% }); %>
+        </ul>
+        <h3>Tags:</h3>
+        <p><%= post.tag %></p>
+        <a href="/posts/<%= post._id %>/edit">Edit Post</a>
+        <form action="/posts/<%= post._id %>?_method=DELETE" method="POST" >
+            <button type="submit">Delete</button>
+        </form>
+        <a href="/posts">Back to Posts</a>
+    </div>
+</body>
+</html>
